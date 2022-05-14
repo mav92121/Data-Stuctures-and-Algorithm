@@ -11,7 +11,7 @@ int main()
             if(i>=2 && j>=n+2-i && j<=n+i-1) cout<<"*" ; 
             else 
             {
-                if(j<=5) cout<<j;
+                if(j<=n) cout<<j;
                 else cout<<2*n+1-j;
             }
         }
