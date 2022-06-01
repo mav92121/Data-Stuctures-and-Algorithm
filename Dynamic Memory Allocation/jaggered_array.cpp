@@ -4,6 +4,7 @@ int main()
 {
 	int row;
     cin>>row;
+    //creating array
     int **arr=new int* [row];
     int col[row];
     for(int i=0;i<row;i++) cin>>col[i];
@@ -12,16 +13,17 @@ int main()
         for(int j=0;j<col[i];j++)
         arr[i]=new int [col[i]];
     }
+
+    // inputing values
     for(int i=0;i<row;i++)
     {
         for(int j=0;j<col[i];j++)
         {
-            // int temp;
-            // cin>>temp;
-            // arr[i][j]=temp;
             cin>>arr[i][j];
         }
     }
+    
+    // printing values
     for(int i=0;i<row;i++)
     {
         for(int j=0;j<col[i];j++)
@@ -30,6 +32,8 @@ int main()
         }
         cout<<endl;
     }
+
+    // deleting heap memory 
     for(int i=0;i<row;i++)
     {
         delete []arr[i];
