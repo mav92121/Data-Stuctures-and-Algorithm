@@ -2,7 +2,17 @@
 using namespace std;
 void rec(int n, int from, int to , int via)
 {
-    
+    if(n==1)
+    {
+        cout<<from<<" "<<to<<endl;
+        return;
+    }
+    else
+    {
+        rec(n-1,from,via, to);
+        rec(1,from,to,via);
+        rec(n-1,via,to,from);
+    }
 }
 int main()
 {
