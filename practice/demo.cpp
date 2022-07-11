@@ -1,14 +1,32 @@
 #include <bits/stdc++.h>
 using namespace std;
-void rec(int n, int from, int to , int via)
+#define int long long int
+void rec(int arr[],int n,int index,int sum,int &ans,int &curr)
 {
-    
+    if(index>n)
+    {
+        return;
+    }
+    ans=min(ans,min(curr,(sum-curr)));
+    rec(arr,n,index+1,sum,ans,curr);
+    curr+=arr[index];
+    rec(arr,n,index+1,sum,ans,curr);
+    curr-=arr[index];
 }
-int main()
+int32_t main()
 {
     int n;
     cin>>n;
-    cout<<pow(2,n)-1<<endl;
-    rec(n,1,3,2);
-    return 0;
+    int arr[n];
+    int sum=0;
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+        sum+=arr[i];
+    }
+    // cout<<sum<<endl;
+    int ans=INT_MAX;
+    int curr=0;
+    rec(arr,n,0,sum,ans,curr);
+    cout<<ans<<endl;
 }
