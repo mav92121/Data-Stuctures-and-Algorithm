@@ -5,6 +5,15 @@ class Node{
     Node*next;
     int data;
 };
+class ListNode{
+    public:
+    ListNode*next;
+    int val;
+    ListNode(int data)
+    {
+        this->val=data;
+    }
+};
 
 Node* sortedMerge(Node* head1, Node* head2)  
 {  
@@ -49,3 +58,39 @@ Node* sortedMerge(Node* head1, Node* head2)
     return start1;
     
 }  
+
+// approach 2
+
+ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) 
+{
+    ListNode*temp=new ListNode(-1);
+    ListNode*ans=temp;
+    while(list1 && list2)
+    {
+        if(list1->val<list2->val)
+        {
+            temp->next=list1;
+            temp=list1;
+            list1=list1->next;
+        }
+        else
+        {
+            temp->next=list2;
+            temp=list2;  
+            list2=list2->next;
+        }
+    }
+    if(list1)
+    {
+        temp->next=list1;
+        temp=list1;
+        list1=list1->next;
+    }
+    if(list2)
+    {
+        temp->next=list2;
+        temp=list2;
+        list2=list2->next;
+    }
+    return ans->next;
+}
